@@ -33,7 +33,7 @@ const HeaderComponent: FC<headerProps> = ({headerLinksMap, displayedNames, nameO
     </a>
     <ul className="header__links">
       {displayedNames.map((page, i) => (
-        <li className={nameOfActive === page ? "header__link header__link--active" : "header__link"}>
+        <li key={i} className={nameOfActive === page ? "header__link header__link--active" : "header__link"}>
           <Link to={headerLinksMap[page].link}>{headerLinksMap[page].headerSign}</Link>
         </li>
       ))}
