@@ -1,20 +1,23 @@
+import {FC, FormEvent, FormEventHandler} from 'react';
+import {HistoryStateI} from '../components/router/routerTypes';
+
 import {useContext} from 'react';
 import {useNavigate, useLocation} from 'react-router-dom';
 
-import authCtx from '../context/authCtx.js';
+import authCtx from '../context/authCtx';
 
-const AuthPage = () => {
+const AuthPage: FC = () => {
   document.title='CoolRouter Вход';
 
   const [auth, setAuth] = useContext(authCtx);
   const navigate = useNavigate();
   const location = useLocation();
 
-  const submitHandler = (e) => {
+  const submitHandler: FormEventHandler<HTMLFormElement> = (e: FormEvent) => {
     e.preventDefault();
     console.log('submit |', location);
     setAuth(!auth);
-    navigate(location.state?.from || '/');
+    navigate((location.state as HistoryStateI)?.from || '/');
   }
 
   return (
