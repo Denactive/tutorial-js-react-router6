@@ -1,6 +1,7 @@
 import Header from "../components/headerComponent";
 
 const AboutPage = () => {
+  document.title='CoolRouter О нас';
   return (
     <div className='page'>
       <Header />

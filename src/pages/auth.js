@@ -1,10 +1,22 @@
-const submitHandler = (e) => {
-  e.preventDefault();
-  console.log('submitHandler');
-}
+import {useContext} from 'react';
+import {useNavigate, useLocation} from 'react-router-dom';
 
+import authCtx from '../context/authCtx.js';
 
 const AuthPage = () => {
+  document.title='CoolRouter Вход';
+
+  const [auth, setAuth] = useContext(authCtx);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log('submit |', location);
+    setAuth(!auth);
+    navigate(location.state?.from || '/');
+  }
+
   return (
     <div className='page'>
       <nav className="header">
@@ -19,6 +31,7 @@ const AuthPage = () => {
           <input type="password" placeholder="Пароль"></input>
           <button type="submit">Войти</button>
         </form>
+        <h1>{auth.toString()}</h1>
       </div>
     </div>
   )

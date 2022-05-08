@@ -12,6 +12,9 @@ const HeaderComponent = () => (
       <li className="header__link">
         <a href="/about">О нас</a>
       </li>
+      <li className="header__link">
+        <a href="/login">вход</a>
+      </li>
     </ul>
   </nav>
 );
